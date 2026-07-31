@@ -31,7 +31,8 @@ export async function generateEmbedding(text) {
 
     const result = await client.featureExtraction({
       model: modelName,
-      inputs: cleanText
+      inputs: cleanText,
+      provider: 'hf-inference'
     });
 
     if (Array.isArray(result)) {
@@ -49,8 +50,6 @@ export async function generateEmbedding(text) {
         }
         vector = pooled.map(val => val / numTokens);
       }
-      console.log("vector ", vector)
-
       if (vector.length === 384) {
         return normalizeVector(vector);
       }
