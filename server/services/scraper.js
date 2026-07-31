@@ -46,6 +46,7 @@ export async function fetchAndParseUrl(url) {
       const jinaUrl = `https://r.jina.ai/${url}`;
       logger.info({ jinaUrl }, 'Attempting web reader fetch via r.jina.ai');
       const jinaRes = await fetch(jinaUrl, {
+        signal: AbortSignal.timeout(8000),
         headers: {
           'Accept': 'text/plain',
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AIKnowledgeInbox/1.0'
