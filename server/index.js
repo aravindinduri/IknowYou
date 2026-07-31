@@ -48,7 +48,7 @@ async function startServer(port = config.port) {
   try {
     await getDb();
     const server = app.listen(port, () => {
-      logger.info(`🚀 Server running on http://localhost:${port} (${config.nodeEnv})`);
+      logger.info(` Server running on http://localhost:${port} (${config.nodeEnv})`);
     });
 
     server.on('error', (err) => {
